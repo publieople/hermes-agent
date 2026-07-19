@@ -122,6 +122,7 @@ describe('settings helpers', () => {
     it('maps a provider env var to its labeled group', () => {
       expect(providerGroup('XAI_API_KEY')).toBe('xAI')
       expect(providerGroup('NOUS_API_KEY')).toBe('Nous Portal')
+      expect(providerGroup('FIREWORKS_API_KEY')).toBe('Fireworks AI')
       expect(providerGroup('OPENROUTER_API_KEY')).toBe('OpenRouter')
     })
 
@@ -132,9 +133,9 @@ describe('settings helpers', () => {
       // KIMI_CN_ likewise must beat KIMI_.
       expect(providerGroup('KIMI_CN_API_KEY')).toBe('Kimi (China)')
       expect(providerGroup('KIMI_API_KEY')).toBe('Kimi / Moonshot')
-      // HERMES_QWEN_ and HERMES_GEMINI_ both share the HERMES_ stem.
+      // HERMES_QWEN_ shares the HERMES_ stem with other integrations.
       expect(providerGroup('HERMES_QWEN_BASE_URL')).toBe('DashScope (Qwen)')
-      expect(providerGroup('HERMES_GEMINI_CLIENT_ID')).toBe('Gemini')
+      expect(providerGroup('GEMINI_API_KEY')).toBe('Gemini')
     })
 
     it('falls back to "Other" for un-grouped env vars', () => {
